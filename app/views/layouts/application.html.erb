@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Lato' %>
+    <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Indie+Flower' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,7 +15,7 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand">
-            <a href="/">Todo List App</a>
+            <a href="/">To-do List</a>
           </li>
 
           <% TodoList.all.each do |todo_list| %>

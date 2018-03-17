@@ -6,11 +6,33 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
 
+$easing: cubic-bezier(.6, .05, .28, .91);
+// $color1: #5D576B;
+// $color2: #FFFAE3;
+// $color3: #FCFCFC;
+// $color4: #99E1D9;
+// $color5: #F7567C;
+
+$color1: #E64555;
+$color2: #FCFCFC;
+$color3: #5D576B;
+$color4: #00BBFF;
+$color5: #FCD581;
+$color6: #FFF8E8;
+
+html {
+  height: 100%;
+}
+
 body {
+  font-family: 'Lato', sans-serif;
+  color: $color3;
   overflow-x: hidden;
+  height: 100%;
 }
 
 #wrapper {
+  height: 100%;
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -30,11 +52,14 @@ body {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #000;
+  background: $color1;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  ul > li > a {
+    color: $color2;
+  }
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -43,8 +68,19 @@ body {
 
 #page-content-wrapper {
   width: 100%;
+  height: 100%;
   position: absolute;
-  padding: 15px;
+  padding: 0 !important;
+  background-color: $color4;
+  .container-fluid {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    .list-container {
+      width: 100%;
+      padding: 15px 35px;
+    }
+  }
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -52,6 +88,108 @@ body {
   margin-right: -250px;
 }
 
+div#home {
+  background-image: url('/image-cover.jpg');
+  width: 100%;
+  height: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+/* General classes */
+
+ul.sidebar-nav > li.sidebar-brand {
+  a {
+    color: $color5 !important;
+  }
+}
+
+ul.sidebar-nav > li.selected {
+  background-color: $color4;
+}
+
+input#todo_item_content {
+  margin-left: 1px;
+  margin-top: 25px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  padding-left: 15px;
+  border-style: none;
+  background-color: $color5;
+}
+
+ul#items {
+  list-style: none;
+  display: inline-block;
+  width: 100%;
+  padding-left: 0;
+  margin-top: 15px;
+  li {
+    font-size: 15px;
+    background-color: $color2;
+    margin-bottom: 1px;
+    padding: 10px;
+    padding-left: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+    input[type="checkbox"] {
+      float: right;
+      margin-top: 3.5px;
+      margin-right: 3px;
+    }
+  }
+  li.selected {
+    background-color: $color6;
+  }
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+#toggle_menu {
+  position: fixed;
+  z-index: 5;
+  top: 7px;
+  left: 5px;
+  cursor: pointer;
+  transition: left 500ms $easing;
+  div {
+    width: 25px;
+    height: 2px;
+    margin-bottom: 6px;
+    background-color: $color1;
+    transition: transform 500ms $easing, opacity 500ms, background-color 250ms;
+  }
+}
+
+#toggle_menu.active {
+  left: 250px;
+  background-color: $color1;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 21.5px;
+  height: 23px;
+  div {
+    background-color: white;
+    width: 20px;
+    margin-bottom: 8px;
+  }
+  #toggle_menu_top {
+    transform: translateY(10px) rotate(-135deg);
+  }
+  #toggle_menu_middle {
+    opacity: 0;
+    transform: rotate(135deg);
+  }
+  #toggle_menu_bottom {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
 
 /* Sidebar Styles */
 

@@ -4,6 +4,7 @@
     <title>TodoListApp</title>
     <%= csrf_meta_tags %>
 
+    <%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Lato' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,24 +18,40 @@
           </li>
 
           <% TodoList.all.each do |todo_list| %>
-            <li>
+            <li class="<%= @todo_list.present? && @todo_list == todo_list ? 'selected' : '' %>">
               <%= link_to todo_list.name, todo_list_todo_items_path(todo_list) %>
             </li>
           <% end %>
         </ul>
       </div>
+      <div id="toggle_menu" class="active">
+        <div id='toggle_menu_top'></div>
+        <div id='toggle_menu_middle'></div>
+        <div id='toggle_menu_bottom'></div>
+      </div>
       <div id="page-content-wrapper">
         <div class="container-fluid">
           <%= yield %>
-          <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a>
         </div>
       </div>
     </div>
 
     <script>
-      $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+      $(document).ready(function() {
+        $("#toggle_menu").click(function (e) {
+          $("#wrapper").toggleClass("toggled");
+          $("#toggle_menu").toggleClass("active");
+        });
+        $("ul#items>li").click(function (e) {
+          var selected = $(this).hasClass('selected');
+          $("ul#items>li").removeClass('selected');
+          if (!selected) {
+            $(this).addClass('selected');
+          }
+        });
+        $("#todo_item_content").focus(function (e) {
+          $("ul#items>li").removeClass('selected');
+        });
       });
     </script>
   

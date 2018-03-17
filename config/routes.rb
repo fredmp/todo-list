@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :todo_lists do
-    resources :todo_items
+    resources :todo_items do
+      member do
+        put 'toggle'
+      end
+    end
   end
 end

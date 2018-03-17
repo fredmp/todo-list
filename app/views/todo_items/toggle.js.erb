@@ -1,0 +1,7 @@
+$("#todo_item_<%= @todo_item.id %>").prop('checked', <%= @todo_item.done? %>);
+$("#todo_item_<%= @todo_item.id %>").val(<%= @todo_item.done? %>);
+<% if @todo_item.done? %>
+$("#todo_item_li_<%= @todo_item.id %>").addClass('done');
+<% else %>
+$("#todo_item_li_<%= @todo_item.id %>").removeClass('done');
+<% end %>

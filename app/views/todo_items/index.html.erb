@@ -1,6 +1,13 @@
-<% @todo_items.each do |todo_item| %>
-  <li>
-    <%= todo_item.content %>
-    <%= todo_item.done? %>
-  </li>
-<% end %>
+<div class="list-container">
+  <div class="row">
+    <%= text_field_tag "todo_item[content]", '', placeholder: 'Add Item', data: { url: todo_list_todo_items_path(@todo_list), remote: true, method: :post } %>
+  </div>
+  
+  <div class="row">
+    <ul id="items">
+      <% @todo_list.todo_items.each do |todo_item| %>
+        <%= todo_item_tag(todo_item) %>
+          <% end %>
+    </ul>
+  </div>
+</div>

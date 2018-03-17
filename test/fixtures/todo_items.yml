@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  completed_at: 2018-03-17 12:01:12
+  todo_list: one
+
+two:
+  content: MyText
+  completed_at: 2018-03-17 12:01:12
+  todo_list: two

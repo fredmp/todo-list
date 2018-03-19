@@ -155,6 +155,7 @@ ul#items {
       float: right;
       display: none;
       img {
+        margin-top: 0;
         margin-right: 0;
       }
     }
@@ -173,6 +174,21 @@ ul#items {
     }
     img {
       display: block;
+    }
+  }
+}
+
+.footer {
+  font-size: 0.8em;
+  text-align: center;
+  width: 100%;
+  font-style: oblique;
+  color: $color5;
+  span {
+    display: block;
+    a {
+      color: $color5;
+      text-decoration: none;
     }
   }
 }
@@ -267,7 +283,7 @@ ul#items {
 /* Sidebar Styles */
 
 .sidebar-nav {
-  position: absolute;
+  height: 95%;
   top: 0;
   width: 250px;
   margin: 0;

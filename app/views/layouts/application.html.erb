@@ -17,8 +17,10 @@
           <li class="sidebar-brand">
             <a href="/">To-do List</a>
           </li>
-          <%= render 'todo_lists/list' %>
-          <%= render 'todo_lists/form' %>
+          <% if user_signed_in? %>
+            <%= render 'todo_lists/list' %>
+            <%= render 'todo_lists/form' %>
+          <% end %>
         </ul>
         <%= render 'layouts/footer' %>
       </div>
@@ -28,6 +30,7 @@
         <div id='toggle_menu_bottom'></div>
       </div>
       <div id="page-content-wrapper">
+        <%= render 'layouts/header' %>
         <div class="container-fluid">
           <%= yield %>
         </div>

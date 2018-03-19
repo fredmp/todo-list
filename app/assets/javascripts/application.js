@@ -23,7 +23,6 @@ $(document).on('turbolinks:load', function () {
     $('#toggle_menu').toggleClass('active');
   });
   $('ul#items>li').hover(function (e) {
-    console.log('1');
     var selected = $(this).hasClass('selected');
     $('ul#items>li').removeClass('selected');
     if (!selected) {

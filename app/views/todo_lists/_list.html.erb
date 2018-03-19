@@ -1,7 +1,7 @@
-<% TodoList.all.each do |todo_list| %>
+<% current_user.todo_lists.each do |todo_list| %>
   <li id="todo_list_li_<%= todo_list.id %>" class="todo-list-item<%= @todo_list.present? && @todo_list == todo_list ? ' selected' : '' %>">
     <%= link_to todo_list.name, todo_list_todo_items_path(todo_list), class: 'list-name' %>
-    <%= text_field_tag('todo_list[name]', todo_list.name, data: { url: todo_list_path(todo_list), remote: true, method: :put }) %>
+    <%= text_field_tag('todo_list[name]', todo_list.name, id: "todo_list_id_#{todo_list.id}", data: { url: todo_list_path(todo_list), remote: true, method: :put }) %>
     <%= link_to '', class: 'edit-list' do %>
       <%= image_tag('/edit-icon-list.png') %>
     <% end %>

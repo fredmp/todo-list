@@ -72,6 +72,33 @@ body {
   position: absolute;
   padding: 0 !important;
   background-color: $color4;
+  .header {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    p.alert {
+      color: $color1;
+    }
+    p.notice {
+      color: $color3;
+    }
+    .account-links {
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      a {
+        color: $color3;
+        margin: 0 5px 0 5px;
+        text-decoration: none;
+      }
+    }
+  }
   .container-fluid {
     width: 100%;
     height: 100%;
@@ -79,6 +106,17 @@ body {
     .list-container {
       width: 100%;
       padding: 15px 35px;
+    }
+    .auth-container {
+      text-align: center;
+      .row {
+        padding-top: 50px;
+        display: inline-block;
+        margin: auto;
+        .actions {
+          margin-top: 20px;
+        }
+      }
     }
   }
 }
@@ -113,8 +151,8 @@ ul.sidebar-nav > li.selected {
 }
 
 input#todo_item_content {
-  margin-left: 1px;
   margin-top: 25px;
+  margin-left: 1px;
   width: 100%;
   border-radius: 5px;
   padding: 8px;

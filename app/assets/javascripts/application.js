@@ -18,31 +18,58 @@
 //= require_tree .
 
 $(document).ready(function () {
-  $("#toggle_menu").click(function (e) {
-    $("#wrapper").toggleClass("toggled");
-    $("#toggle_menu").toggleClass("active");
+  $('#toggle_menu').click(function (e) {
+    $('#wrapper').toggleClass('toggled');
+    $('#toggle_menu').toggleClass('active');
   });
-  $("ul#items>li").click(function (e) {
+  $('ul#items>li').click(function (e) {
     var selected = $(this).hasClass('selected');
-    $("ul#items>li").removeClass('selected');
+    $('ul#items>li').removeClass('selected');
     if (!selected) {
       $(this).addClass('selected');
     }
   });
-  $("#todo_item_content").focus(function (e) {
-    $("ul#items>li").removeClass('selected');
+  $('ul#items>li>img').click(function (e) {
+    var input = $(e.target).siblings('input[type=text]');
+    var span = $(e.target).siblings('span');
+    span.hide();
+    input.show();
+    input.focus();
+    input.select();
   });
-  $(".add-list>a").click(function (e) {
+  $('ul#items>li>input[type=text]').focusout(function (e) {
     e.preventDefault();
-    $(".add-list>a").hide();
-    $(".add-list>input").show();
-    $(".add-list>input").focus();
+    hideEditItemInput(e.target);
   });
-  $(".add-list>input").keyup(function (e) {
+  $('ul#items>li>input[type=text]').keyup(function (e) {
+    e.preventDefault();
+    if (e.keyCode == 27 || e.keyCode == 13) {
+      hideEditItemInput(e.target);
+    }
+  });
+  $('#todo_item_content').focus(function (e) {
+    $('ul#items>li').removeClass('selected');
+  });
+  $('.add-list>a').click(function (e) {
+    e.preventDefault();
+    $('.add-list>a').hide();
+    $('.add-list>input').show();
+    $('.add-list>input').focus();
+  });
+  $('.add-list>input').keyup(function (e) {
     if (e.keyCode == 27) {
-      $(".add-list>input").val('');
-      $(".add-list>input").hide();
-      $(".add-list>a").show();
+      $('.add-list>input').val('');
+      $('.add-list>input').hide();
+      $('.add-list>a').show();
     }
   });
 });
+
+function hideEditItemInput(target) {
+  var li = $(target).parent();
+  var span = $(target).siblings('span');
+  $(target).val(span.text());
+  $(target).hide();
+  li.removeClass('selected');
+  span.show();
+}

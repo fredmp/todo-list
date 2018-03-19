@@ -1,7 +1,7 @@
 class TodoItemsController < ApplicationController
 
   before_action :set_todo_list
-  before_action :set_todo_item, only: [:toggle, :destroy]
+  before_action :set_todo_item, only: [:toggle, :update, :destroy]
 
   def index
   end
@@ -9,6 +9,11 @@ class TodoItemsController < ApplicationController
   def create
     @todo_item = @todo_list.todo_items.create(todo_item_params)
   end
+
+  def update
+    @todo_item.update(todo_item_params)
+  end
+  
 
   def destroy
     @todo_item.destroy

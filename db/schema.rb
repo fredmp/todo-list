@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20180319203422) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "todo_items", force: :cascade do |t|
     t.text "content"
     t.datetime "completed_at"
-    t.integer "todo_list_id"
+    t.bigint "todo_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180319203422) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_todo_lists_on_user_id"
   end
 
@@ -46,4 +49,6 @@ ActiveRecord::Schema.define(version: 20180319203422) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "todo_items", "todo_lists"
+  add_foreign_key "todo_lists", "users"
 end

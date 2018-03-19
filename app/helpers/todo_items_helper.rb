@@ -15,7 +15,8 @@ module TodoItemsHelper
 
   def todo_item_li_content(todo_item)
     (
-      sanitize(todo_item.content) + check_box_tag(
+      sanitize(todo_item.content) +
+      check_box_tag(
         dom_id(todo_item),
         todo_item.done?,
         todo_item.done?,
@@ -24,6 +25,11 @@ module TodoItemsHelper
           remote: true,
           method: :put
         }
+      ) +
+      link_to(
+        image_tag('/delete-icon-item.png'),
+        todo_list_todo_item_path(todo_item.todo_list, todo_item),
+        method: :delete
       )
     ).html_safe
   end

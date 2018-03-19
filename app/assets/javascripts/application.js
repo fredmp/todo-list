@@ -45,24 +45,4 @@ $(document).ready(function () {
       $(".add-list>a").show();
     }
   });
-  $(".todo-list-item, .list-name, .remove-list").mouseenter(function (e) {
-    var element = $(e.target);
-    if (element.hasClass('todo-list-item')) {
-      $(e.target).find(".remove-list").css('display', 'inline');
-    } else if (element.hasClass('list-name')) {
-      $(e.target).next().css('display', 'inline');
-    } else if (element.hasClass('remove-list')) {
-      $(e.target).css('display', 'inline');
-    }
-  });
-  $(".todo-list-item").mouseleave(function (e) {
-    var element = $(e.target);
-    if (element.hasClass('todo-list-item')) {
-      $(e.target).find(".remove-list").css('display', 'none');
-    } else if (element.hasClass('list-name')) {
-      $(e.target).next().css('display', 'none');
-    } else if (element.hasClass('remove-list')) {
-      $(e.target).css('display', 'none');
-    }
-  });
 });

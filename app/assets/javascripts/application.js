@@ -17,12 +17,13 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
   $('#toggle_menu').click(function (e) {
     $('#wrapper').toggleClass('toggled');
     $('#toggle_menu').toggleClass('active');
   });
-  $('ul#items>li').click(function (e) {
+  $('ul#items>li').hover(function (e) {
+    console.log('1');
     var selected = $(this).hasClass('selected');
     $('ul#items>li').removeClass('selected');
     if (!selected) {

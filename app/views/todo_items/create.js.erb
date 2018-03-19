@@ -1,2 +1,3 @@
 $("#items").append('<%= todo_item_tag(@todo_item) %>');
 $("#todo_item_content").val("");
+$("#todo_list_li_<%= @todo_item.todo_list.id %>>a.list-name")[0].click();

@@ -149,6 +149,25 @@ ul#items {
   }
 }
 
+.todo-list-item {
+  .list-name {
+    text-indent: 20px;
+    position: relative;
+    display: inline-block;
+    width: 88%;
+    margin: 0;
+    padding: 0;
+  }
+  .remove-list {
+    display: none;
+    margin: 0;
+    padding: 0;
+    img {
+      width: 20px;
+    }
+  }
+}
+
 .add-list {
   margin: 10px;
   a {
@@ -223,7 +242,6 @@ ul#items {
 }
 
 .sidebar-nav li {
-  text-indent: 20px;
   line-height: 40px;
 }
 
@@ -247,6 +265,7 @@ ul#items {
   height: 65px;
   font-size: 18px;
   line-height: 60px;
+  text-indent: 25px;
 }
 
 .sidebar-nav>.sidebar-brand a {

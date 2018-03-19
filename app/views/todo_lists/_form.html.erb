@@ -1,0 +1,6 @@
+<%= form_tag(controller: 'todo_lists', action: 'create', method: 'post') do %>
+  <div class="row add-list">
+    <a id="add-list-link">Add List +</a>
+    <%= text_field_tag "todo_list[name]", '', placeholder: 'Type the name and press enter...' %>
+  </div>
+<% end %>

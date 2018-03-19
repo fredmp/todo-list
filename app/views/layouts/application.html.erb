@@ -17,17 +17,8 @@
           <li class="sidebar-brand">
             <a href="/">To-do List</a>
           </li>
-          <% TodoList.all.each do |todo_list| %>
-            <li class="<%= @todo_list.present? && @todo_list == todo_list ? 'selected' : '' %>">
-              <%= link_to todo_list.name, todo_list_todo_items_path(todo_list) %>
-            </li>
-          <% end %>
-          <%= form_tag(controller: 'todo_lists', action: 'create', method: 'post') do %>
-            <div class="row add-list">
-              <a id="add-list-link">Add List +</a>
-              <%= text_field_tag "todo_list[name]", '', placeholder: 'Type the name and press enter...' %>
-            </div>
-          <% end %>
+          <%= render 'todo_lists/list' %>
+          <%= render 'todo_lists/form' %>
         </ul>
       </div>
       <div id="toggle_menu" class="active">
@@ -41,38 +32,5 @@
         </div>
       </div>
     </div>
-
-    <script>
-      $(document).ready(function() {
-        $("#toggle_menu").click(function (e) {
-          $("#wrapper").toggleClass("toggled");
-          $("#toggle_menu").toggleClass("active");
-        });
-        $("ul#items>li").click(function (e) {
-          var selected = $(this).hasClass('selected');
-          $("ul#items>li").removeClass('selected');
-          if (!selected) {
-            $(this).addClass('selected');
-          }
-        });
-        $("#todo_item_content").focus(function (e) {
-          $("ul#items>li").removeClass('selected');
-        });
-        $(".add-list>a").click(function (e) {
-          e.preventDefault();
-          $(".add-list>a").hide();
-          $(".add-list>input").show();
-          $(".add-list>input").focus();
-        });
-        $(".add-list>input").keyup(function (e) {
-          if (e.keyCode == 27) {
-            $(".add-list>input").val('');
-            $(".add-list>input").hide();
-            $(".add-list>a").show();
-          }
-        });
-      });
-    </script>
-  
   </body>
 </html>

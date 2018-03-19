@@ -1,0 +1,8 @@
+<% TodoList.all.each do |todo_list| %>
+  <li class="todo-list-item<%= @todo_list.present? && @todo_list == todo_list ? ' selected' : '' %>">
+    <%= link_to todo_list.name, todo_list_todo_items_path(todo_list), class: 'list-name' %>
+    <%= link_to todo_list_path(todo_list), method: :delete, class: 'remove-list' do %>
+      <%= image_tag('/delete-icon.png') %>
+    <% end %>
+  </li>
+<% end %>

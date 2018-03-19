@@ -63,12 +63,39 @@ $(document).ready(function () {
       $('.add-list>a').show();
     }
   });
+  $('.edit-list').click(function (e) {
+    e.preventDefault();
+    var li = $(e.target).parents('li.todo-list-item');
+    var input = li.find('input');
+    var mainLink = li.find('.list-name');
+    mainLink.hide();
+    input.val(mainLink.text());
+    input.show();
+    input.focus();
+    input.select();
+  });
+  $('li.todo-list-item>input[type=text]').focusout(function (e) {
+    hideEditListInput(e.target);
+  });
+  $('li.todo-list-item>input[type=text]').keyup(function (e) {
+    if (e.keyCode == 27) {
+      hideEditListInput(e.target);
+    }
+  });
 });
+
+function hideEditListInput(target) {
+  var input = $(target);
+  var mainLink = input.parents('li.todo-list-item').find('.list-name');
+  input.val(mainLink.text());
+  input.hide();
+  mainLink.show();
+}
 
 function hideEditItemInput(target) {
   var li = $(target).parent();
   var span = $(target).siblings('span');
-  $(target).val(span.text());
+  $(target).val('');
   $(target).hide();
   li.removeClass('selected');
   span.show();

@@ -13,5 +13,6 @@ test:
 
 production:
   <<: *default
+  database: todo_list
   username: <%= ENV['TODO_LIST_DATABASE_USER'] %>
   password: <%= ENV['TODO_LIST_DATABASE_PASS'] %>
